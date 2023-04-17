@@ -10,7 +10,17 @@
 </head>
 <body>
     <header>
-        <nav class="navbar bg-dark fixed-top" data-bs-theme="dark">
+        <nav class="navbar bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Sketchy Etches</a>
+                <form action="?sides=" id="gridSizeInput">
+                    <label for="numSides" id="numSidesLabel">Pick grid size?</label>
+                    <input type="number" name="numSides" id="numSides" min="3" max="100">
+                    <button class="btn btn-light" id="numSides">Change grid size</button>
+                </form>
+            </div>
+          </nav>
+        <!-- <nav class="navbar bg-dark fixed-top" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Sketchy Etches</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -41,15 +51,11 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form action="?sides=" id="gridSizeInput">
-                            <label for="numSides">Pick grid size?</label>
-                            <input type="number" name="numSides" id="numSides" min="3" max="100">
-                            <button class="btn btn-light" id="numSides">Change grid size</button>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
     </header>
     <main>
         <div id="page-container"></div>

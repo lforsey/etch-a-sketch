@@ -1,18 +1,50 @@
 const container = document.querySelector('#page-container');
 const gridSize = document.querySelector('#gridSizeInput');
 
-const defaultGridSize = 16;
+// Create default grid fragment
 const frag = document.createDocumentFragment('div');
 
-for (let i = 0; i < defaultGridSize * defaultGridSize; i++) {
-    const newSquare = document.createElement('div');
-    newSquare.classList.add('default');
-    frag.appendChild(newSquare);
+const defaultGridSize = 16;
+for (let i = 0; i < defaultGridSize; i++) { //create grid rows
+    const newColumn = document.createElement('div');
+    newColumn.classList.add('default');
+    newColumn.style.height = `${Math.floor(800 / defaultGridSize)}px`;
+    for (let j = 0; j < defaultGridSize; j++) { // populate with grid squares
+        const newSquare = document.createElement('div');
+        newSquare.classList.add('square');
+        newSquare.style.width = `${Math.floor(800 / defaultGridSize)}px`;
+        newSquare.style.height = `${Math.floor(800 / defaultGridSize)}px`;
+        newColumn.appendChild(newSquare); //append square to column
+    }
+    frag.appendChild(newColumn); // append column to document fragment.
 }
 
-container.appendChild(frag);
+container.appendChild(frag); // append fragment to document.
+
+const createGrid = (size, fragment, destination) => {
+    while (destination.firstChild) {
+        destination.removeChild(destination.firstChild);
+    }
+    for (let i = 0; i < size; i++) {
+        const newColumn = document.createElement('div');
+        newColumn.classList.add('default');
+        for (let j = 0; j < size; j++) {
+            const newSquare = document.createElement('div');
+            newSquare.classList.add('square');
+            newSquare.style.minWidth = `${Math.floor(800 / size)}px`;
+            newSquare.style.minHeight = `${Math.floor(800 / size)}px`;
+            newColumn.appendChild(newSquare);
+        }
+        fragment.appendChild(newColumn);
+    }
+    destination.appendChild(fragment);
+}
 
 gridSize.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(e.target[0].valueAsNumber);
+    let size = e.target[0].valueAsNumber;
+    console.log(e)
+    console.log(size, frag, container);
+    createGrid(size, frag, container);
+    gridSize.reset();
 })

@@ -4,7 +4,12 @@
 }
 
 div {
-    margin: auto;
+    margin: 0;
+    padding: 0;
+}
+
+nav > ul > li > a {
+    text-align: left;
 }
 
 #page-container {
@@ -15,17 +20,51 @@ div {
     flex-wrap: wrap;
     max-width: 90vh;
     max-height: 90vh;
-    margin: 10vh auto auto auto;
+    margin: 22px auto auto auto;
+}
+
+#numSidesLabel {
+    color: white;
 }
 
 .default {
     display: flex;
-    border: grey solid 2px;
-    height: 50px;
-    width: 50px;
-    margin: auto;
+    flex-direction: row;
+    margin: 0;
 }
 
-.default:hover {
-    background-color: slategrey;
+.square {
+    display: flex;
+    flex-wrap: nowrap;
+    border: grey 1px solid;
+    margin: 0;
+}
+
+.square:hover {
+    background-color: #565656;
+    opacity: 0.15;
+}
+
+.once {
+    background-color: #565656;
+    opacity: 0.2;
+}
+
+.twice {
+    background-color: #565656;
+    opacity: 0.4;
+}
+
+.thrice {
+    background-color: #565656;
+    opacity: 0.6;
+}
+
+.four {
+    background-color: #565656;
+    opacity: 0.8;
+}
+
+.five {
+    background-color: #565656;
 }
