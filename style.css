@@ -8,10 +8,6 @@ div {
     padding: 0;
 }
 
-nav > ul > li > a {
-    text-align: left;
-}
-
 #page-container {
     display: flex;
     flex-direction: row;
