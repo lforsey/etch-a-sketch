@@ -29,8 +29,10 @@ createGrid(16, frag, container);
 gridSize.addEventListener('submit', (e) => {
     e.preventDefault();
     let size = e.target[0].valueAsNumber;
-    console.log(e)
-    console.log(size, frag, container);
-    createGrid(size, frag, container);
+    if (!size) {
+        createGrid(16, frag, container);
+    } else {
+        createGrid(size, frag, container);
+    }
     gridSize.reset();
 });
