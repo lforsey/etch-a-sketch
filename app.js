@@ -33,4 +33,4 @@ gridSize.addEventListener('submit', (e) => {
     console.log(size, frag, container);
     createGrid(size, frag, container);
     gridSize.reset();
-})
+});
