@@ -18,10 +18,6 @@
                     <input type="number" name="numSides" id="numSides" min="3" max="100" value="16">
                     <button class="btn btn-light" id="numSides">Change grid size</button>
                 </form>
-                <form action="?color=">
-                    <label for="colorPicker" class="menuLabels">Pick color?</label>
-                    <input type="color" name="colorPicker" id="colorPicker">
-                </form>
             </div>
           </nav>
     </header>
@@ -29,14 +25,18 @@
         <div id="page-container"></div>
         <section id="appControls">
             <h2>Etchy-Sketches</h2>
-            <div class="column left-column" id="penStyle">
-
-                <form action="?pensstyle=">
+            <div class="controlsWrapper">
+                <div class="column leftColumn" id="penStyle">
                     <input type="radio" name="penStyle" id="etchASketch" value="etchASketch"><label for="etchASketch">Etch-A-Sketch</label>
                     <input type="radio" name="penStyle" id="fill" value="fill"><label for="fill">Fill</label>
                     <input type="radio" name="penStyle" id="erase" value="erase"><label for="erase">Eraser</label>
                     <input type="radio" name="penStyle" id="clickToDraw" value="clickToDraw"><label for="clickToDraw">Click to Draw</label>
-                </form>
+                </div>
+                <div class="column rightColumn" id="colorChoices">
+                    <input type="color" name="colorPicker" id="colorPicker"><label for="colorPicker">Pick color?</label>
+                    <input type="radio" name="colorStyle" id="rainbow" value="rainbow"><label for="rainbow">Rainbow</label>
+                    <input type="radio" name="colorStyle" id="black" value="black"><label for="black">Black</label>
+                </div>
             </div>
         </section>
     </main>

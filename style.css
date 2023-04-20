@@ -41,26 +41,12 @@ div {
     opacity: 0.15;
 }
 
-.once {
-    background-color: #565656;
-    opacity: 0.2;
+#appControls {
+    text-align: center;
 }
 
-.twice {
-    background-color: #565656;
-    opacity: 0.4;
-}
-
-.thrice {
-    background-color: #565656;
-    opacity: 0.6;
-}
-
-.four {
-    background-color: #565656;
-    opacity: 0.8;
-}
-
-.five {
-    background-color: #565656;
+.controlsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
