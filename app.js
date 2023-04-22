@@ -1,6 +1,7 @@
 const container = document.querySelector('#page-container');
 const gridSize = document.querySelector('#gridSizeInput');
-
+const penStyle = document.querySelector('#penStyle');
+const colorStyle = document.querySelector('#colorChoices');
 
 // Create default grid fragment
 const frag = document.createDocumentFragment('div');
@@ -17,9 +18,6 @@ const createGrid = (size, fragment, destination) => {
             newSquare.classList.add('square');
             newSquare.style.minWidth = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
             newSquare.style.minHeight = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
-            newSquare.addEventListener('mouseover', (e) => {
-                draw('black', 'fill', newSquare)
-            });
             newColumn.appendChild(newSquare);
         }
         fragment.appendChild(newColumn);
@@ -27,18 +25,23 @@ const createGrid = (size, fragment, destination) => {
     destination.appendChild(fragment);
 }
 
-const getColor = () => {
-
-}
-
 const draw = (color, mode, target) => {
-    if (mode === 'erase') {
-        target.style.backgroundColor = 'white';
-    } else if (mode === 'fill') {
-        target.style.backgroundColor = color;
+    console.log(mode);
+    switch (mode) {
+        case ('erase'):
+            target.style.opacity = 0;
+            break;
+        case ('fill'):
+            target.style.backgroundColor = color;
+            break;
     }
 }
 
+const getColor = (colorSelector) => {
+    colorSelector.addEventListener('change', (e) => {
+        return e.target.value;
+    });
+}
 
 // Initialize default 16*16 grid
 createGrid(16, frag, container);
@@ -52,4 +55,12 @@ gridSize.addEventListener('submit', (e) => {
         createGrid(size, frag, container);
     }
     gridSize.reset();
+});
+
+colorStyle.addEventListener('change', (e) => {
+    console.log(e)
+});
+
+container.addEventListener('mouseover', (e) => {
+    draw('black', 'fill', e.target);
 });
