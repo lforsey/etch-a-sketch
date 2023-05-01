@@ -18,6 +18,7 @@ const createGrid = (size, fragment, destination) => {
             newSquare.classList.add('square');
             newSquare.style.minWidth = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
             newSquare.style.minHeight = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
+            newSquare.style.backgroundColor = 'rgba(0, 0, 0, 0.0)';
             newColumn.appendChild(newSquare);
         }
         fragment.appendChild(newColumn);
@@ -25,23 +26,24 @@ const createGrid = (size, fragment, destination) => {
     destination.appendChild(fragment);
 }
 
-const draw = (color, mode, target) => {
-    console.log(mode);
+const draw = (color, mode, target, opacity) => {
     switch (mode) {
         case ('erase'):
-            target.style.opacity = 0;
+            target.style.backgroundColor = `rgba(0, 0, 0, 1)`;
             break;
         case ('fill'):
             target.style.backgroundColor = color;
             break;
+        case ('etchASketch'):
+            target.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`
     }
 }
 
-const getColor = (colorSelector) => {
-    colorSelector.addEventListener('change', (e) => {
-        return e.target.value;
-    });
-}
+// const getColor = (colorSelector) => {
+//     colorSelector.addEventListener('change', (e) => {
+//         return e.target.value;
+//     });
+// }
 
 // Initialize default 16*16 grid
 createGrid(16, frag, container);
@@ -57,10 +59,30 @@ gridSize.addEventListener('submit', (e) => {
     gridSize.reset();
 });
 
-colorStyle.addEventListener('change', (e) => {
-    console.log(e)
-});
+window.onload = (e) => {
+    let colorMode = `rgba(0, 0, 0, 1)`;
+    let penMode = 'fill';
 
-container.addEventListener('mouseover', (e) => {
-    draw('black', 'fill', e.target);
-});
+    colorStyle.addEventListener('change', (e) => {
+        colorMode = e.target.value;
+    });
+
+    penStyle.addEventListener('change', (e) => {
+        penMode = e.target.value;
+    });
+
+    container.addEventListener('mouseover', (e) => {
+        if (e.target.classList.value === 'square' && penMode === 'etchASketch') {
+            
+            // let bgColor = e.target.style.backgroundColor;
+            // let rgbaArr = bgColor.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
+            // let opacity = parseInt(rgbaArr[3]);
+            // opacity += 0.2;
+            // draw(colorMode, penMode, e.target, opacity);
+            // console.log(opacity)
+        } else if (e.target.classList.value === 'square') {
+            draw(colorMode, penMode, e.target);
+        }
+    });
+}
+
