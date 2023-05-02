@@ -14,8 +14,8 @@ div {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    max-width: 90vh;
-    max-height: 90vh;
+    max-width: 75vh;
+    max-height: 75vh;
     margin: 22px auto auto auto;
 }
 
@@ -32,8 +32,8 @@ div {
 .square {
     display: flex;
     flex-wrap: nowrap;
-    border: grey 1px solid;
     margin: 0;
+    border: lightgrey 1px solid;
 }
 
 .square:hover {

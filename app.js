@@ -18,7 +18,6 @@ const createGrid = (size, fragment, destination) => {
             newSquare.classList.add('square');
             newSquare.style.minWidth = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
             newSquare.style.minHeight = `${Math.floor((window.innerHeight * 0.75) / size)}px`;
-            // newSquare.style.backgroundColor = 'rgba(0, 0, 0, 0.0)';
             newColumn.appendChild(newSquare);
         }
         fragment.appendChild(newColumn);
@@ -26,20 +25,30 @@ const createGrid = (size, fragment, destination) => {
     destination.appendChild(fragment);
 }
 
-const draw = (color, mode, target, opacity) => {
+const getRandomColor = () => {
+    const rainbow = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#9400D3'];
+    const rand = Math.floor(Math.random() * rainbow.length);
+    return rainbow[rand];
+}
+
+const draw = (color, mode, target) => {
     switch (mode) {
         case ('erase'):
             target.style.backgroundColor = `#FFF`;
-            target.style.opacity = 1;
+            target.style.opacity = '';
             break;
         case ('fill'):
             target.style.backgroundColor = color;
             target.style.opacity = 1;
             break;
         case ('etchASketch'):
+            target.style.backgroundColor = '#5A5A5A';
             // +target.style.opacity casts value from str to int
             target.style.opacity = +target.style.opacity + 0.2;
-
+            break;
+        case ('rainbow'):
+            target.style.opacity = '';
+            target.style.backgroundColor = getRandomColor();
     }
 }
 
@@ -58,24 +67,25 @@ gridSize.addEventListener('submit', (e) => {
 });
 
 window.onload = (e) => {
-    let colorMode = `rgba(0, 0, 0, 1)`;
+    let colorMode = `#000`;
     let penMode = 'fill';
 
-    colorStyle.addEventListener('change', (e) => {
-        colorMode = e.target.value;
-    });
-
     penStyle.addEventListener('change', (e) => {
-        penMode = e.target.value;
+        if (e.target.id === 'clickToDraw') {
+            container.addEventListener()
+        }
+        if (e.target.id === 'colorPicker') {
+            colorMode = e.target.value;
+            penMode = 'fill';
+            document.querySelector('#fill').checked = true;
+        } else {
+            penMode = e.target.value;
+        }
     });
 
     container.addEventListener('mouseover', (e) => {
-        if (e.target.classList.value === 'square' && penMode === 'etchASketch') {
-            e.target.style.backgroundColor = '#5A5A5A';
-            draw(colorMode, penMode, e.target)
-        } else if (e.target.classList.value === 'square') {
+        if (e.target.classList.value === 'square') {
             draw(colorMode, penMode, e.target);
         }
     });
 }
-
