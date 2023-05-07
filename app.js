@@ -71,9 +71,6 @@ window.onload = (e) => {
     let penMode = 'fill';
 
     penStyle.addEventListener('change', (e) => {
-        if (e.target.id === 'clickToDraw') {
-            container.addEventListener()
-        }
         if (e.target.id === 'colorPicker') {
             colorMode = e.target.value;
             penMode = 'fill';

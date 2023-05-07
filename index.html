@@ -27,12 +27,14 @@
             <h2>Etchy Sketches</h2>
             <div class="controlsWrapper">
                 <div class="column leftColumn" id="penStyle">
-                    <input type="radio" name="penStyle" id="etchASketch" value="etchASketch"><label for="etchASketch">Etch-A-Sketch</label>
-                    <input type="radio" name="penStyle" id="fill" value="fill" checked><label for="fill">Fill</label>
-                    <input type="radio" name="penStyle" id="erase" value="erase"><label for="erase">Eraser</label>
-                    <input type="radio" name="penStyle" id="clickToDraw" value="clickToDraw"><label for="clickToDraw">Click to Draw</label>
-                    <input type="radio" name="penStyle" id="rainbow" value="rainbow"><label for="rainbow">Rainbow</label>
-                    <label for="colorPicker">Pick color?</label><span> </span><input type="color" name="penStyle" id="colorPicker">
+                    <span class="radio">
+                        <input type="radio" name="penStyle" id="etchASketch" class="customRadio" value="etchASketch" label="Etch-A-Sketch">
+                        <input type="radio" name="penStyle" id="fill" class="customRadio" value="fill" checked label="Fill">
+                        <input type="radio" name="penStyle" id="erase" class="customRadio" value="erase" label="Erase">
+                        <input type="radio" name="penStyle" id="rainbow" class="customRadio" value="rainbow" label="Rainbow">
+                        <input type="color" name="penStyle" id="colorPicker" label="Pick a Color?">
+                    </span>
+                    
                 </div>
             </div>
         </section>
